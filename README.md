@@ -1,24 +1,64 @@
-# README
+## users テーブル
+| Column   | Type   | Options     |
+| -------- | ------ | ----------- |
+| nickname | string | null: false |
+| email    | string | null: false |
+| password | string | null: false |
+| firstname| string | null: false |
+| lastname | string | null: false |
+| birthday | string | null: false |
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Association
+- has_many :users_items
+- has_many :items, through :users_items
+- has_many :buys
 
-Things you may want to cover:
 
-* Ruby version
+## items テーブル
+| Column   | Type   | Options     |
+| -------- | ------ | ----------- |
+| image    | string | null: false |
+| name     | string | null: false |
+| ex       | string | null: false |
+| category | string | null: false |
+| status   | string | null: false |
+| delfee   | string | null: false |
+| ship ori | string | null: false |
+| ship day | string | null: false |
+| price    | string | null: false |
 
-* System dependencies
+### Association
+- has_many :users_items
+- has_many :users, through :users_items
+- has_many :buys
 
-* Configuration
 
-* Database creation
+## user_items テーブル
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| items  | references | null: false, foreign_key: true |
 
-* Database initialization
+### Association
+- belongs_to :user
+- belongs_to :item
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## buys テーブル
+| Column    | Type   | Options     |
+| --------- | ------ | ----------- |
+| c num     | string | null: false |
+| c dm      | string | null: false |
+| c dy      | string | null: false |
+| postal    | string | null: false |
+| prefecture| string | null: false |
+| city      | string | null: false |
+| ad num    | string | null: false |
+| build     | string | null: false |
+| tell      | string | null: false |
+| user_id   | string | null: false |
+| items_id  | string | null: false |
 
-* Deployment instructions
-
-* ...
+### Association
+- belongs_to :user
+- belongs_to :item
