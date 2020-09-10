@@ -26,7 +26,7 @@
 | delfee_id  | integer | null: false |
 | ship_ori_id| integer | null: false |
 | ship_day_id| integer | null: false |
-| price      | string  | null: false |
+| price      | integer | null: false |
 
 ### Association
 - has_many :users_items
@@ -47,3 +47,13 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
+- has_one :buy_manage
+
+
+## buy_manage テーブル
+| Column    | Type    | Options     |
+| --------- | ------- | ----------- |
+| buy_name  | string  | null: false |
+
+### Association
+- belongs_to :buy
