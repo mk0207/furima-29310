@@ -26,7 +26,7 @@
 | ship_ori_id| integer | null: false |
 | ship_day_id| integer | null: false |
 | price      | integer | null: false |
-| use_id     | integer | null: false |
+| use_id     | integer | null: false, , foreign_key: true |
 
 ### Association
 - has_many :users
@@ -34,19 +34,17 @@
 
 
 ## buys テーブル
-| Column       | Type    | Options     |
-| ------------ | ------- | ----------- |
-| postal       | string  | null: false |
-| prefecture   | integer | null: false |
-| city         | string  | null: false |
-| ad_num       | string  | null: false |
-| build        | string  |             |
-| tell         | string  | null: false |
-| buy_manage_id| integer | null: false |
+| Column       | Type    | Options                          |
+| ------------ | ------- | -------------------------------- |
+| postal       | string  | null: false                      |
+| prefecture   | integer | null: false                      |
+| city         | string  | null: false                      |
+| ad_num       | string  | null: false                      |
+| build        | string  |                                  |
+| tell         | string  | null: false                      |
+| buy_manage_id| integer | null: false, , foreign_key: true |
 
 ### Association
-- belongs_to :user
-- belongs_to :item
 - has_one :buy_manages
 
 
@@ -54,7 +52,7 @@
 | Column   | Type    | Options                        |
 | -------- | ------- | ------------------------------ |
 | user_id  | integer | null: false, foreign_key: true |  
-| item_id | integer | null: false, foreign_key: true |  
+| item_id  | integer | null: false, foreign_key: true |  
 
 ### Association
 - belongs_to :buy
