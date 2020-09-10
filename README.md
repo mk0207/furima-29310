@@ -45,7 +45,7 @@
 | buy_manage_id| integer | null: false, , foreign_key: true |
 
 ### Association
-- has_one :buy_manages
+- has_one :buy_manage
 
 
 ## buy_manage テーブル
@@ -55,6 +55,6 @@
 | item_id  | integer | null: false, foreign_key: true |  
 
 ### Association
-- belongs_to :buy
+- has_one :buy
 - belongs_to :user
 - belongs_to :item
