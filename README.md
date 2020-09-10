@@ -51,9 +51,10 @@
 
 
 ## buy_manage テーブル
-| Column    | Type    | Options     |
-| --------- | ------- | ----------- |
-| buy_name  | string  | null: false |
+| Column   | Type    | Options     |
+| -------- | ------- | ----------- |
+| user_id  | integer | null: false |  
+| items_id | integer | null: false |  
 
 ### Association
 - belongs_to :buy
