@@ -1,24 +1,60 @@
-# README
+## users テーブル
+| Column      | Type   | Options     |
+| ----------- | ------ | ----------- |
+| nickname    | string | null: false |
+| email       | string | null: false |
+| password    | string | null: false |
+| f_name_read | string | null: false |
+| l_name_read | string | null: false |
+| firstname   | string | null: false |
+| lastname    | string | null: false |
+| birthday    | date   | null: false |
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Association
+- has_many :items
+- has_many :buy_manages
 
-Things you may want to cover:
 
-* Ruby version
+## items テーブル
+| Column     | Type    | Options     |
+| ---------- | ------- | ----------- |
+| name       | string  | null: false |
+| description| text    | null: false |
+| category_id| integer | null: false |
+| status_id  | integer | null: false |
+| delfee_id  | integer | null: false |
+| ship_ori_id| integer | null: false |
+| ship_day_id| integer | null: false |
+| price      | integer | null: false |
+| use_id     | integer | null: false, , foreign_key: true |
 
-* System dependencies
+### Association
+- has_many :users
+- has_one :buy_manage
 
-* Configuration
 
-* Database creation
+## buys テーブル
+| Column       | Type    | Options                          |
+| ------------ | ------- | -------------------------------- |
+| postal       | string  | null: false                      |
+| prefecture   | integer | null: false                      |
+| city         | string  | null: false                      |
+| ad_num       | string  | null: false                      |
+| build        | string  |                                  |
+| tell         | string  | null: false                      |
+| buy_manage_id| integer | null: false, , foreign_key: true |
 
-* Database initialization
+### Association
+- belongs_to :buy_manage
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## buy_manage テーブル
+| Column   | Type    | Options                        |
+| -------- | ------- | ------------------------------ |
+| user_id  | integer | null: false, foreign_key: true |  
+| item_id  | integer | null: false, foreign_key: true |  
 
-* Deployment instructions
-
-* ...
+### Association
+- has_one :buy
+- belongs_to :user
+- belongs_to :item
