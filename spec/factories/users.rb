@@ -9,6 +9,6 @@ FactoryBot.define do
     lastname {Gimei.last.kanji}
     f_name_read {Gimei.first.katakana}
     l_name_read {Gimei.last.katakana}
-    birthday {2000-01-01}
+    birthday {"2000-01-01"}
   end
 end
