@@ -8,8 +8,7 @@ class User < ApplicationRecord
   has_many :buy_manage
 
   validates :nickname, :birthday, presence: true
-  validates :email, presence: true, uniqueness: true, format: { with: /@.+/}
-  validates :password, length: { minimum: 6 }, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
   with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'Full-width characters'} do
     validates :firstname
     validates :lastname
