@@ -16,4 +16,5 @@ class Item < ApplicationRecord
   validates :delfee_id, numericality: { other_than: 1 }
   validates :ship_ori_id, numericality: { other_than: 1 }
   validates :ship_day_id, numericality: { other_than: 1 }
+
 end
