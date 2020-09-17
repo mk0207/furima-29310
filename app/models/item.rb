@@ -11,11 +11,13 @@ class Item < ApplicationRecord
 
   validates :image, :name, :description, :price, presence: true
 
-  validates :category_id, numericality: { other_than: 1, message: 'Select' }
-  validates :status_id, numericality: { other_than: 1, message: 'Select' }
-  validates :delfee_id, numericality: { other_than: 1, message: 'Select' }
-  validates :ship_ori_id, numericality: { other_than: 1, message: 'Select' }
-  validates :ship_day_id, numericality: { other_than: 1, message: 'Select' }
+  with_options numericality: { other_than: 1, message: 'Select' } do
+    validates :category_id
+    validates :status_id
+    validates :delfee_id
+    validates :ship_ori_id
+    validates :ship_day_id
+  end
 
   validates :price, format: { with: /\A[0-9]+\z/, message: 'Half-width number' }
   validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'Out of setting range' }
