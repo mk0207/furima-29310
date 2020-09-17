@@ -30,31 +30,31 @@ RSpec.describe Item, type: :model do
     end
 
     it 'category_idが選択されていないと登録できないこと' do
-      @item.category_id = nil
+      @item.category_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Category Select")
     end
 
     it 'status_idが選択されていないと登録できないこと' do
-      @item.status_id = nil
+      @item.status_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Status Select")
     end
 
     it 'delfee_idが選択されていないと登録できないこと' do
-      @item.delfee_id = nil
+      @item.delfee_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Delfee Select")
     end
 
     it 'ship_ori_idが選択されていないと登録できないこと' do
-      @item.ship_ori_id = nil
+      @item.ship_ori_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Ship ori Select")
     end
 
     it 'ship_day_idが選択されていないと登録できないこと' do
-      @item.ship_day_id = nil
+      @item.ship_day_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Ship day Select")
     end
@@ -67,6 +67,7 @@ RSpec.describe Item, type: :model do
 
     it 'priceが300~9999999以外では登録できないこと' do
       @item.price = 200
+      @item.price = 100000000
       @item.valid?
       expect(@item.errors.full_messages).to include("Price Out of setting range")
     end
