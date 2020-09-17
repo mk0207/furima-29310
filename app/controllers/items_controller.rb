@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all
   end
 
   def new
@@ -20,9 +19,5 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :image, :description, :price, :category_id, :status_id, :delfee_id, :ship_ori_id, :ship_day_id)
-  end
-
-  def item_params_image
-    params.require(:item).permit(:image).merge(user_id: current_user.id)
   end
 end
