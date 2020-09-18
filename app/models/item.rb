@@ -6,6 +6,8 @@ class Item < ApplicationRecord
   belongs_to_active_hash :ship_ori
   belongs_to_active_hash :ship_day
 
+  belongs_to :user
+
   has_one :buy_manage
   has_one_attached :image
 
