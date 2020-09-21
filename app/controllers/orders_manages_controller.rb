@@ -1,5 +1,7 @@
 class OrdersManagesController < ApplicationController
   before_action :authenticate_user!, only: [:index]
+  before_action :redirect, only: [:index]
+  before_action :ordered, only: [:index]
 
   def index
     @item = Item.find(params[:item_id])
@@ -32,5 +34,14 @@ class OrdersManagesController < ApplicationController
       currency:'jpy'                 # 通貨の種類(日本円)
     )
   end
-  
+
+  def redirect
+    @item = Item.find(params[:item_id])
+    redirect_to root_path if current_user.id == @item.user_id
+  end
+
+  def ordered
+    @item = Item.find(params[:item_id])
+    redirect_to root_path if @item.orders_manage != nil
+  end
 end
