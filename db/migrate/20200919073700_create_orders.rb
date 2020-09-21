@@ -6,7 +6,8 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.string :city ,null: false
       t.string :ad_num ,null: false
       t.string :build ,null: false
-      t.integer :tell ,null: false
+      t.string :tell ,null: false
+      t.references :orders_manage,  null: false,  foreign_key: true
 
       t.timestamps
     end

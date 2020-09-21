@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_20_132230) do
+ActiveRecord::Schema.define(version: 2020_09_19_073700) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -53,9 +53,11 @@ ActiveRecord::Schema.define(version: 2020_09_20_132230) do
     t.string "city", null: false
     t.string "ad_num", null: false
     t.string "build", null: false
-    t.integer "tell", null: false
+    t.string "tell", null: false
+    t.bigint "orders_manage_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["orders_manage_id"], name: "index_orders_on_orders_manage_id"
   end
 
   create_table "orders_manages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -86,6 +88,7 @@ ActiveRecord::Schema.define(version: 2020_09_20_132230) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "orders", "orders_manages"
   add_foreign_key "orders_manages", "items"
   add_foreign_key "orders_manages", "users"
 end
