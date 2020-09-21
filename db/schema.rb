@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_19_073700) do
+ActiveRecord::Schema.define(version: 2020_09_20_132230) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -36,11 +36,11 @@ ActiveRecord::Schema.define(version: 2020_09_19_073700) do
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "description", null: false
-    t.string "category_id", null: false
-    t.string "status_id", null: false
-    t.string "delfee_id", null: false
-    t.string "ship_ori_id", null: false
-    t.string "ship_day_id", null: false
+    t.integer "category_id", null: false
+    t.integer "status_id", null: false
+    t.integer "delfee_id", null: false
+    t.integer "ship_ori_id", null: false
+    t.integer "ship_day_id", null: false
     t.integer "price", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -58,14 +58,23 @@ ActiveRecord::Schema.define(version: 2020_09_19_073700) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "orders_manages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_orders_manages_on_item_id"
+    t.index ["user_id"], name: "index_orders_manages_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "nickname", default: "", null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "f_name_read", null: false
-    t.string "l_name_read", null: false
+    t.string "nickname", null: false
+    t.string "email", null: false
+    t.string "encrypted_password", null: false
     t.string "firstname", null: false
     t.string "lastname", null: false
+    t.string "f_name_read", null: false
+    t.string "l_name_read", null: false
     t.date "birthday", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -77,4 +86,6 @@ ActiveRecord::Schema.define(version: 2020_09_19_073700) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "orders_manages", "items"
+  add_foreign_key "orders_manages", "users"
 end

@@ -1,36 +1,17 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, only: [:index]
 
   def index
-    @item = Item.find(params[:item_id])
-    @order = Order.new
+    @order = OrdersManageForm.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
-    @order = Order.new(order_params)
-    if @order.valid?
-      pay_item
-      @order.save
-      return redirect_to root_path
-    else
-      render :index
-    end
+    @order = OrdersManageForm.new(order_params)
+    
   end
 
   private
-
   def order_params
-    params.permit(:token, :postal, :prefecture_id, :city, :ad_num, :build, :tell)
+    params.permit(:token, :postal, :prefecture_id, :city, :ad_num, :build, :tell).merge(user_id: current_user.id, :item_id)
   end
 
-  def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-    Payjp::Charge.create(
-      amount: order_params[:price],  # 商品の値段
-      card: order_params[:token],    # カードトークン
-      currency:'jpy'                 # 通貨の種類(日本円)
-    )
-  end
-  
 end

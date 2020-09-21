@@ -12,7 +12,7 @@
 
 ### Association
 - has_many :items
-- has_many :buy_manages
+- has_many :orders_manages
 
 
 ## items テーブル
@@ -29,32 +29,32 @@
 | use_id     | integer | null: false, , foreign_key: true |
 
 ### Association
-- has_many :users
-- has_one :buy_manage
+- belongs_to :user
+- has_one :orders_manage
 
 
-## buys テーブル
-| Column       | Type    | Options                          |
-| ------------ | ------- | -------------------------------- |
-| postal       | string  | null: false                      |
-| prefecture   | integer | null: false                      |
-| city         | string  | null: false                      |
-| ad_num       | string  | null: false                      |
-| build        | string  |                                  |
-| tell         | string  | null: false                      |
-| buy_manage_id| integer | null: false, , foreign_key: true |
-
-### Association
-- belongs_to :buy_manage
-
-
-## buy_manage テーブル
+## orders_manages テーブル
 | Column   | Type    | Options                        |
 | -------- | ------- | ------------------------------ |
-| user_id  | integer | null: false, foreign_key: true |  
-| item_id  | integer | null: false, foreign_key: true |  
+| user_id  | integer | null: false, foreign_key: true |
+| item_id  | integer | null: false, foreign_key: true |
 
 ### Association
-- has_one :buy
+- has_one :order
 - belongs_to :user
 - belongs_to :item
+
+
+## orders テーブル
+| Column          | Type    | Options                          |
+| --------------- | ------- | -------------------------------- |
+| postal          | string  | null: false                      |
+| prefecture_id   | integer | null: false                      |
+| city            | string  | null: false                      |
+| ad_num          | string  | null: false                      |
+| build           | string  |                                  |
+| tell            | string  | null: false                      |
+| orders_manage_id   | integer | null: false, , foreign_key: true |
+
+### Association
+- belongs_to :orders_manage
