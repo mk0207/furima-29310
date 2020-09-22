@@ -6,7 +6,7 @@ RSpec.describe OrdersManageForm, type: :model do
       @orders_manage = FactoryBot.build(:orders_manage_form)
     end
 
-    it 'build以外に値が存在すれば登録できること' do
+    it 'building以外に値が存在すれば登録できること' do
       expect(@orders_manage).to be_valid
     end
 

@@ -52,7 +52,7 @@
 | prefecture_id   | integer | null: false                      |
 | city            | string  | null: false                      |
 | ad_num          | string  | null: false                      |
-| build           | string  |                                  |
+| building        | string  |                                  |
 | tell            | string  | null: false                      |
 | orders_manage_id   | integer | null: false, , foreign_key: true |
 

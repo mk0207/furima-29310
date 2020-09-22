@@ -4,7 +4,7 @@ FactoryBot.define do
     prefecture_id { 2 }
     city { '豊島区' }
     ad_num { 'あいう1-2' }
-    build { 'アイウエオ' }
+    building { 'アイウエオ' }
     tell { '09012341234' }
     token { '1a1a' }
   end
