@@ -4,4 +4,4 @@ class Prefecture < ActiveHash::Base
     { id: 2, name: '北海道' },
     { id: 3, name: '東京' }
   ]
-  end
+end
