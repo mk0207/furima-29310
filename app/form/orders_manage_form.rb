@@ -9,7 +9,7 @@ class OrdersManageForm
   validates :postal, presence: true, format: { with: /\A\d{3}[-]\d{4}\z/ , message: "code Input correctly"}
   validates :city, presence: true
   validates :ad_num, presence: true
-  #validates :tell, presence: true, format: { with: /\A\d{11}\z/ }
+  validates :tell, presence: true, format: { with: /\A\d{11}\z/ }
 
   validates :token, presence: true
 
