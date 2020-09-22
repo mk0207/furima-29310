@@ -1,15 +1,14 @@
 class OrdersManagesController < ApplicationController
-  before_action :authenticate_user!, only: [:index]
+  before_action :set_orders_manage, only: [:index, :create]
+  before_action :authenticate_user!, only: [:index, :create]
   before_action :redirect, only: [:index]
   before_action :ordered, only: [:index]
 
   def index
-    @item = Item.find(params[:item_id])
     @orders_manage = OrdersManageForm.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @orders_manage = OrdersManageForm.new(order_params)
     if @orders_manage.valid?
       pay_item
@@ -44,4 +43,9 @@ class OrdersManagesController < ApplicationController
     @item = Item.find(params[:item_id])
     redirect_to root_path unless @item.orders_manage.nil?
   end
+
+  def set_orders_manage
+    @item = Item.find(params[:item_id])
+  end
+
 end

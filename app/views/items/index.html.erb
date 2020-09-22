@@ -135,8 +135,7 @@
           <%= image_tag items.image, class: "item-img" %>
 
           <%# 商品が売れていればsold outを表示しましょう %>
-          <%if items.orders_manage == nil %>
-          <% else %>
+          <% unless items.orders_manage == nil then %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>

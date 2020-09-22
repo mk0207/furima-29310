@@ -10,6 +10,12 @@ RSpec.describe OrdersManageForm, type: :model do
       expect(@orders_manage).to be_valid
     end
 
+    it 'tokenが空では登録できないこと' do
+      @orders_manage.token = nil
+      @orders_manage.valid?
+      expect(@orders_manage.errors.full_messages).to include("Token can't be blank")
+    end
+
     it 'postalが空では登録できないこと' do
       @orders_manage.postal = nil
       @orders_manage.valid?
