@@ -22,6 +22,7 @@ class OrdersManagesController < ApplicationController
   private
 
   def order_params
+    binding.pry
     params.require(:orders_manage_form).permit(:postal, :prefecture_id, :city, :ad_num, :building, :tell).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 

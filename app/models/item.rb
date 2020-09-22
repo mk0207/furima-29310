@@ -13,7 +13,7 @@ class Item < ApplicationRecord
 
   validates :image, :name, :description, :price, presence: true
 
-  with_options numericality: { other_than: 1, message: 'Select' } do
+  with_options numericality: { other_than: 0, message: 'Select' } do
     validates :category_id
     validates :status_id
     validates :delfee_id

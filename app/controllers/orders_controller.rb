@@ -6,12 +6,11 @@ class OrdersController < ApplicationController
 
   def create
     @order = OrdersManageForm.new(order_params)
-    
   end
 
   private
   def order_params
-    params.permit(:token, :postal, :prefecture_id, :city, :ad_num, :build, :tell).merge(user_id: current_user.id, :item_id)
+    params.permit(:token, :postal, :prefecture_id, :city, :ad_num, :building, :tell).merge(user_id: current_user.id)
   end
 
 end
