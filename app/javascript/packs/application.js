@@ -16,3 +16,17 @@ require("../card")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+// if (xxxx) {
+//   hoge
+// } elseif (xxx) {
+
+// } else {
+
+// }
+
+
+// const path = location.pathname
+// // const params = path.replace(/items/g, '').replace(/transactions/g, '').replace(/\//g, '');
+
+// if (path.includes("cards") && path.includes("transactions") && /^([1-9]\d*|0)$/.test(params)) {
