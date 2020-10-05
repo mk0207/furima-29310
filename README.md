@@ -1,3 +1,4 @@
+# テーブル設計
 ## users テーブル
 | Column      | Type   | Options     |
 | ----------- | ------ | ----------- |
@@ -26,7 +27,8 @@
 | ship_ori_id| integer | null: false |
 | ship_day_id| integer | null: false |
 | price      | integer | null: false |
-| use_id     | integer | null: false, , foreign_key: true |
+| use_id     | integer | null: false, foreign_key: true |
+※ imageカラムはActive storegeを使用
 
 ### Association
 - belongs_to :user
